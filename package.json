@@ -1,0 +1,16 @@
+{
+  "name": "rest-api-cookbook",
+  "description": "REST API cookbooks by WOAPI, OCTO Technology",
+  "version": "1.0.0",
+  "repository": "git@github.com:octo-woapi/cookbook.git",
+  "author": "Andrea Gueugnaut <agueugnaut@octo.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "vuepress build recipes",
+    "serve": "vuepress dev recipes"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.4.0",
+    "vuepress": "^1.4.0"
+  }
+}
