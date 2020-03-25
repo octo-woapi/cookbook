@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- '12'
+cache:
+  yarn: true
+script:
+- yarn build
+deploy:
+  edge: true
+  provider: pages:git
+  cleanup: false
+  local_dir: "./recipes/.vuepress/dist"
+  token:
+    secure: VaGiTmcKl7StHVJR9GV2f18ZWuJ1IXonOACqDmgSEm6boN88jxunyCz1RKuEXXU/CoKNk2zUdoDdkp+dFZaq2yN85KLxaT9Plfj5eYB1mx9t/OhLl6ZMU7fVxPYp4+XB8qDjB5voLezXQb6ZvznTL7tlBHe4kFPxfSVUsPTDCVQkPOLsw9R7SMpoWkLxYPTawlRRj5Z295J+pEOGMilllJp4tQs5ek4G+HXIgxdfPWUVhJpmvG9jK5GVR8nU7yLnc0SEYaZmyfBll3eGYSrymOUeVEBtn0x7l2mhSff5+LklOQ8jsHi4B07FJU0UlMuMtuFlIsI1p8uU7rZNRb3dl6NvQed8O+5275R5aCyavwHAirzlwcQwd/PZg6WtxEKRGO7GKrbea4JUi95frCPBHPgeYrp5L5+Lth0amCuCjrKwp1o0fz+1Ub6j0oKS5FOtCppskkFDvnevEa7D52F8TiyiH5JsqMAWBjBxLmdTrJDmL2B1bzBl9OByexgYXsTHyMnNPMsVxj9/QJaKXeq1mptLLq5e6uKx6/w14hIjdh7CwZhO521qXD83e4c6u6Q07j9DN2vEBi68wEfd+MFIcSgbY0YMzHXFnhtyVjYCl5Xrg+j40nEuvWD4qCGyNE6H5ZlpRa1zNtTRUt3g3zjKLcma0fziR364V/wKvPfCTk8=
+  keep_history: true
+  repo: octo-woapi/cookbook
+  on:
+    branch: master

@@ -1,10 +1,14 @@
+---
+name: Batch processing
+complexity: 3
+description: Update many resources in a single request (a.k.a. a batch)
+---
+
 # Batch processing
 
 ## Use-case
 
 We would like to update many resources in a single request (a batch).
-
-## Complexity: 3
 
 ## Recipe 1
 
