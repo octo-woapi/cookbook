@@ -1,58 +1,44 @@
 <template>
-  <span>
-    <v-progress-circular
-      class="progress"
-      :rotate="-90"
-      :value="progress"
-      :color="color"
-      >{{ Math.floor(value) }}</v-progress-circular
-    >{{ value | complexity }}
-  </span>
+  <div class="complexity">
+    <v-icon class="icon" :color="complexity.color">
+      {{ complexity.icon }}
+    </v-icon>
+    <span>{{ complexity.text }}</span>
+  </div>
 </template>
 
 <script>
+export const complexities = [
+  { color: "grey", text: "Unrated", icon: "mdi-signal-off" },
+  { color: "green", text: "Beginner", icon: "mdi-signal-cellular-outline" },
+  { color: "yellow", text: "Medium", icon: "mdi-signal-cellular-1" },
+  { color: "orange", text: "Advanced", icon: "mdi-signal-cellular-2" },
+  { color: "red", text: "Expert", icon: "mdi-signal-cellular-3" },
+]
+
 export default {
   name: "Complexity",
   props: {
     value: {
       type: Number,
-      validator: value => 0 <= value && value <= 5,
+      validator: value => 0 <= value && value <= 4,
     },
   },
   computed: {
-    progress() {
-      return Math.floor(this.value) * 20
-    },
-    color() {
-      const map = {
-        0: "grey",
-        1: "green",
-        2: "yellow",
-        3: "orange",
-        4: "dark-orange",
-        5: "red",
-      }
-      return map[Math.floor(this.value)]
-    },
-  },
-  filters: {
-    complexity(value) {
-      const map = {
-        0: "Unrated",
-        1: "Beginner",
-        2: "Easy",
-        3: "Medium",
-        4: "Advanced",
-        5: "Expert",
-      }
-      return map[Math.floor(value)]
+    complexity() {
+      return complexities[Math.floor(this.value)]
     },
   },
 }
 </script>
 
 <style scoped lang="scss">
-.progress {
-  margin-right: 8px;
+.complexity {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 4px;
 }
 </style>

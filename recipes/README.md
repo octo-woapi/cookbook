@@ -2,4 +2,4 @@
 layout: Home
 ---
 
-Made with :love: by the API team @OCTO.
+Made with :heart: by the WOAPI team @OCTO.

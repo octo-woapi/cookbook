@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="344" outlined :to="url">
+  <v-card class="mx-auto card" max-width="344" outlined :to="url">
     <v-card-title>{{ title }}</v-card-title>
     <v-card-subtitle>
       {{ description }}
@@ -26,9 +26,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.card {
-  display: inline-block;
-  min-height: 24px;
-  width: 300px;
+@import "../styles/variables";
+
+.card:hover {
+  border-color: $primary;
+  transition: border-color 0.4s $material-transition;
 }
 </style>

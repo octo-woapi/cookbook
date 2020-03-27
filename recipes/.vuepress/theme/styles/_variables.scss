@@ -1,0 +1,6 @@
+@import "~vuetify/src/styles/settings/colors";
+
+$primary: map-get($green, 'darken-1');
+$secondary: map-get($green, 'ligthen-4');
+$accent: map-get($light-blue, 'base');
+$material-transition: cubic-bezier(0.4, 0, 0.2, 1)
