@@ -1,10 +1,7 @@
 ---
-name: Batch processing
-complexity: 3
 description: Update many resources in a single request (a.k.a. a batch)
+complexity: 3
 ---
-
-# Batch processing
 
 ## Use-case
 
