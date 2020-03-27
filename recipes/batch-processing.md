@@ -3,6 +3,8 @@ description: Update many resources in a single request (a.k.a. a batch)
 complexity: 3
 ---
 
+# Batch processing
+
 ## Use-case
 
 We would like to update many resources in a single request (a batch).
