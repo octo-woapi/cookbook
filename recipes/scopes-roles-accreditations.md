@@ -45,9 +45,9 @@ The actual privileges of a client are the intersection of the scope and the priv
 A role is a group or type of users who shares the same objectives when using an application.
 Example : In a market place like application, we can imagine 3 roles : *sellers*, *vendors*, *administrators*.
 
-### Accreditation
+### Accreditations
 
-Accreditation is fine grained user access management. This check is done within the application to grant or not the access to a specific resource (the resource access can be done on id, or by any other information). This is often refered as ACL.
+Accreditations are fine grained user access management. This check is done within the application to grant or not the access to a specific resource (the resource access can be done on id, or by any other information). This is often refered as ACL.
 Example : If we take again the market place application, we can imagine a seller being able to modify only his goods and not the ones from other sellers or imagine having multiple user profiles, such as *developper* et or *maintainer* on a github repo.
 
 ## Scopes in detail
