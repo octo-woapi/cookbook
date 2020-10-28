@@ -19,7 +19,7 @@ Example authentication token :
     "active": true,
     "client_id": "l238j323ds-23ij4",
     "username": "jdoe",
-    "scope": "read write dolphin",
+    "scope": "read:cart write:cart",
     "sub": "Z5O3upPC88QrAjx00dis",
     "aud": "https://protected.example.net/resource",
     "iss": "https://server.example.com/",
