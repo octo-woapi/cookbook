@@ -1,5 +1,5 @@
 ---
-description: How should I use the scopes in my application
+description: How should I use the scopes in my application and what are their conventions
 complexity: 1
 ---
 
