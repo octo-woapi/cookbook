@@ -1,13 +1,15 @@
 ---
-description: How to manage scopes, roles and accreditation in an application/api
+description: How should I use the scopes in my application
 complexity: 1
 ---
 
-# Scopes, roles and accreditations
+# A little bit of context : Scopes, roles and accreditations
 
 ## Use-case
 
 ![use-case-schema](images/scopes-roles-accreditations/use_case.png)
+
+I own a token to connect to the API, how should o name them and what they should control ?
 
 In this use case, the user (resource owner) uses an web application (client) which consumes a protected API (resource server).
 The OpenId/OAuth provider is out of scope.
@@ -29,7 +31,7 @@ Example authentication token :
 }
 ```
 
-## Definitnions
+## Definitions
 
 ### Scope
 
@@ -37,8 +39,8 @@ Example authentication token :
 
 Scopes are permissions that have been granted to the client
 
-It’s a list of words which describe a subset of privileges of the resource owner
-The actual privileges of a client are the intersection of the scope and the privileges of the resource owner
+It’s a list of words which describe a subset of privileges of the resource owner.
+The actual privileges of a client are the intersection of the scope and the privileges of the resource owner.
 
 ### Roles
 
@@ -58,12 +60,12 @@ This scenarri describes the privileges of a client communicating with a resource
 
 ![scope_without-end-user-schema](images/scopes-roles-accreditations/scope_without_end_user.png)
 
-- Scopes are permissions owns by the client
+- Scopes are permissions owned by the client
 - The privileges of a client is the scope granted by the resource server during enrollment
 
 ### Scopes with access delegation
 
-In this scenarii, the user wants to grant access to a client only to a subset of his privileges.
+In this scenario, the user wants to grant access to a client only to a subset of his privileges.
 
 ![scope_without-end-user-schema](images/scopes-roles-accreditations/scope_delegation.png)
 
@@ -73,11 +75,13 @@ In this scenarii, the user wants to grant access to a client only to a subset of
 
 ### Naming recommendation
 
-Excplicit naming should uniquely identify the resources accessible (or the API endmoints accessible).
+Explicit naming should uniquely identify the resources accessible (or the API endmoints accessible).
 
-Our recommendation si to use the form :
+Our recommendation is to use the format :
 read:<resource_name>
 write:<resource_name>
+
+Scopes int the token should be separated by a space.
 
 Example of a JWT issued to a client with *read only* acces to the cart
 ```json
