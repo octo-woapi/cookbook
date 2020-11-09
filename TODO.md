@@ -14,6 +14,7 @@
 1. [MLM] Faire une action dans API sans créer de ressource ? Non-resource scenario
 1. Integers vs Strings vs libellés UI-friendly
 1. [ARD] Pagination
+1. [MLM] Format d'erreur
 
 ## Should have
 
