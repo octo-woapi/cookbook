@@ -18,7 +18,7 @@ In case of an error, I already know about [HTTP status codes](https://httpstatus
 
 ## Recipe
 
-**Chose an error format for your API, and stick with it.**
+**Choose an error format for your API, and stick with it.**
 
 The error response body should be an object, containing always the same attributes.
 
@@ -69,6 +69,6 @@ This is helpful for the Client to perform a first treatment when no details are 
 
 ### Don'ts
 - **don't use HTTP Status Code as error codes**: you will never achieve a one-to-one mapping between error cases and statuses. It does not scale at all: you will be stuck as soon as you will want to make the difference between two cases that belong to the same status.
-- **don't use technical error codes**, such as numeric values or abstruse codes: your Client will have to go through an unfriendly documentation for understanding the error.
+- **don't use technical error codes**, such as numeric values or non-explicit codes: your Client will have to go through an unfriendly documentation for understanding the error.
   - eg: `"error_code": "42"`, `"error_code": "NF"`...
   - this is also a good practice of separation of concerns: if internal codes are exposed on your API, it means that the API is coupled with your implementation. Refactoring may be more difficult, since your API Clients are now aware of some of your internal details. Technical stuff should not appear on your API!
