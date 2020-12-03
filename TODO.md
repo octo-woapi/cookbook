@@ -47,3 +47,9 @@ avec stockage possible (POST /resources?... => 201 Location /resources/:id => GE
 - APIM pour les flux sortants (article d'archi)
 - APIM pour les appels internes ? Une gateway, deux gateways ? (article d'archi)
 - APIs réactives (RTM : Slack, Twitter)
+
+## Tech
+
+- [ ] Add 2 more articles
+- [ ] Fix the color of the complexity icon (should change based on the value)
+- [ ] Add tags if needed (to be defined)
