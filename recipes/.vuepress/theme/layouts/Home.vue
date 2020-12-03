@@ -3,7 +3,6 @@
     <div class="recipes-container">
       <recipes :recipes="recipes"></recipes>
     </div>
-
     <page :sidebarItems="false">
       <template #top>
         <slot name="page-top" />
