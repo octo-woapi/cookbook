@@ -1,6 +1,7 @@
 <template>
   <div class="theme-container" :class="pageClasses">
     <div class="recipes-container">
+      <h1 class="text-h1">The API Cookbook</h1>
       <recipes :recipes="recipes"></recipes>
     </div>
     <page :sidebarItems="false">
@@ -62,6 +63,7 @@ export default {
   padding: $navbarHeight 2rem 0;
   max-width: $homePageWidth;
   margin: 16px auto;
+
   .recipes
     margin: 32px 0;
 </style>

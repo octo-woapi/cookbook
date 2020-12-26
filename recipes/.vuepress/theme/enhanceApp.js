@@ -1,3 +1,4 @@
+import "vuetify/dist/vuetify.min.css"
 import Vuetify, {
   VCard,
   VCardSubtitle,
