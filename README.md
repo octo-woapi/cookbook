@@ -2,6 +2,10 @@
 
 > Recipes for cooking complex API meals
 
+## Web app
+
+https://octo-woapi.github.io/cookbook/
+
 ## Status
 
 In active development.
