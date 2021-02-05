@@ -9,7 +9,7 @@
 1. Cache API (ETag, Cache-Control, Pragma...)
 1. [MLM] Ressource complexe VS ressource light (design + ?fields=)
 1. Gestion des ID de ressources (quand en faire, ou pas, quoi choisir, quid du cas façade d’un système sous jacent (qui a ses propres ID, ou pas d’IDs...)) => https://matthiasnoback.nl/2018/05/when-and-where-to-determine-the-id-of-an-entity/
-1. Filtre complexe (trop de paramètres dans l’URL)
+1. [KENG] Filtre complexe (trop de paramètres dans l’URL)
 1. [KLEI] Versionner une API
 1. [MLM] Faire une action dans API sans créer de ressource ? Non-resource scenario
 1. Integers vs Strings vs libellés UI-friendly
