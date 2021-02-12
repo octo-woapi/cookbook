@@ -8,13 +8,15 @@ complexity: 2
 ## Use-case
 
 On any APIs where there is a need to fetch resources, there is also a need to filter these using search criteria.
-In most cases, these criteria are present in the url as query params. But when there is too many search criteria used to filter a list, the API call may look like this:
+In most cases, these criteria are present in the url as query params.
+It can be tempting to shorten the request by using shortens or code to describe your search criterias, ending up with something like:
 
 ```shell
-GET https://api.example.com/v1/products?page=1&limit=5&typeProduct=type1&typeProduct=type2&typeProduct=type3&brand=brand1&brand=brand2&...
+GET https://api.example.com/v1/products?page=1&limit=5&productType=type1&productType=type2&productType=type3&brand=brand1&brand=brand2&...
 ```
 
-It is unreadable, too long and may exceed the maximum length of the URL (depending on the browser).
+In this case, the request is even less readable, you will need a very strong documentation and you may end up developping dictionnaries to list all those codes.
+Also, it may exceed the maximum length of the URL (depending on the browser).
 
 And in the case where there are nested parameters, long series of values for one criterion, how can we handle it?
 
@@ -23,9 +25,9 @@ So what can we do about all of this? Let's look at the following recipes.
 
 ## Recipe 1: use a different request method, verb POST
 
-It may seem confusing but keep in mind that an endpoint either may or may not return(GET) or accept(POST/PUT)/... resources.
+It may seem confusing but keep in mind that an endpoint either may or may not return (GET) or accept (POST/PUT)/... resources.
 
-In [RFC 2616](http://www.rfcreader.com/#rfc2616_line2483), it is defined that with POST, the data sent may not  result in the creation of a new resource.
+In [RFC 2616](http://www.rfcreader.com/#rfc2616_line2483), it is defined that with POST, the data sent may not result in the creation of a new resource.
 
 Using the HTTP verb POST, creates an endpoint which accepts a request body that contains the Search Criteria.
 
@@ -34,7 +36,7 @@ POST https://api.example.com/v1/products/search HTTP/1.1
 {
     "page": 1,
     "limit": 15,
-    "typeProduct": [
+    "productType": [
         "type1",
         "type2",
         "type3"
@@ -51,7 +53,7 @@ POST https://api.example.com/v1/products/search HTTP/1.1
 < }]
 ```
 
-This endpoint will not create any resource but will returns the result of the search with the criteria sent.
+This endpoint will not create any resource but will return the result of the search with the sent criteria.
 
 
 ### Benefits and drawbacks
@@ -75,7 +77,7 @@ Using the HTTP verb GET, creates an endpoint which accepts an object (JSON, XML,
 At first, it will look like this because the object will be encoded.
 
 ```shell
-GET https://api.example.com/v1/products?searchCriteria=%7B%22page%22%3A1%2C%22limit%22%3A15%2C%22typeProduct%22%3A%5B%22type1%22%2C%22type2%22%2C%22type3%22%5D%2C%22brand%22%3A%5B%22brand1%22%2C%22brand2%22%5D%2C%22otherSearchCriteria%22%3A...%7D HTTP/1.1
+GET https://api.example.com/v1/products?searchCriteria=%7B%22page%22%3A1%2C%22limit%22%3A15%2C%22productType%22%3A%5B%22type1%22%2C%22type2%22%2C%22type3%22%5D%2C%22brand%22%3A%5B%22brand1%22%2C%22brand2%22%5D%2C%22otherSearchCriteria%22%3A...%7D HTTP/1.1
 < 200 OK
 < [{
 <     ...
@@ -85,7 +87,7 @@ GET https://api.example.com/v1/products?searchCriteria=%7B%22page%22%3A1%2C%22li
 But when decoded, it will look like this.
 
 ```shell
-GET https://api.example.com/v1/products?searchCriteria={"page":1,"limit":15,"typeProduct":["type1","type2","type3"],"brand":["brand1","brand2"],"otherSearchCriteria":...} HTTP/1.1
+GET https://api.example.com/v1/products?searchCriteria={"page":1,"limit":15,"productType":["type1","type2","type3"],"brand":["brand1","brand2"],"otherSearchCriteria":...} HTTP/1.1
 < 200 OK
 < [{
 <     ...
