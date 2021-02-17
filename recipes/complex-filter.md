@@ -66,7 +66,10 @@ Benefits:
 Drawbacks:
 * because it's not common to use a POST like this, consumers need to know all the specifications in order to use this endpoint such as the body of Search Criteria
 * cannot share a link to make the same search
-
+* not recommended if the request body can not be easily retrieved (e.g. from a log monitor)
+    * it will be hard to reproduce the request
+* responses to POST are not target of caching operations, HTTP caches are limited to caching responses to GET
+    * it may be possible to cache responses to POST, but it will be difficult
 
 ## Recipe 2: put an object into an URL parameter
 
@@ -102,7 +105,11 @@ Benefits:
 * the parameters are structured in an object
 * handle more complex search criteria, ex: nested parameters, array
 * reduces the number of occurrences of query params
+* responses to GET can be cached by a browser, proxy, cdn, gateway...
 
 Drawbacks:
 * url is not readable
 * there is a need to decode the url parameters
+* it should not be abused, it should be used for the most complex endpoints
+    * in case this method is used, there may be a need to reconsider the design
+      (the reason is trying to do too many things with this endpoint)
