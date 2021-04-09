@@ -113,3 +113,30 @@ Drawbacks:
 * it should not be abused, it should be used for the most complex endpoints
     * in case this method is used, there may be a need to reconsider the design
       (the reason is trying to do too many things with this endpoint)
+
+## Recipe 3: use of delimiters within a query param
+
+Instead of having multiple query params for one parameter, delimiters can be used within a single query param.
+
+Using the example in the use-case with a delimiter like `,`, it will look like:
+
+```shell
+GET https://api.example.com/v1/products?page=1&limit=5&productType=type1,type2,type3&brand=brand1,brand2...
+```
+
+But it will only work on string query params.
+
+Plus in the API side, there will be a need to parse the query params `productType` & `brand` by the delimiter.
+
+### Benefits and drawbacks
+
+Benefits:
+* reduces the number of occurrences of query params
+* enhances readability
+
+Drawbacks:
+* consumers need to know the specifications
+* limited usable on string query params
+* need to choose a delimiter that will not hinder the readability
+    * `,` is OK
+    * `;` `|` `&` are reserved characters and can not be used
