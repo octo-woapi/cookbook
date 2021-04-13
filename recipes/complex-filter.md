@@ -136,7 +136,7 @@ Benefits:
 
 Drawbacks:
 * consumers need to know the specifications
-* limited usable on string query params
+* limited use on string query params
 * need to choose a delimiter that will not hinder the readability
     * `,` is OK
     * `;` `|` `&` are reserved characters and can not be used
