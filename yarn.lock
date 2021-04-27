@@ -1109,7 +1109,7 @@
     markdown-it-table-of-contents "^0.4.0"
     prismjs "^1.13.0"
 
-"@vuepress/plugin-active-header-links@1.8.2":
+"@vuepress/plugin-active-header-links@1.8.2", "@vuepress/plugin-active-header-links@^1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-active-header-links/-/plugin-active-header-links-1.8.2.tgz#0cb9b29c826dd97d35357a9b09c962ef782cb793"
   integrity sha512-JmXAQg8D7J8mcKe2Ue3BZ9dOCzJMJXP4Cnkkc/IrqfDg0ET0l96gYWZohCqlvRIWt4f0VPiFAO4FLYrW+hko+g==
@@ -7756,10 +7756,10 @@ vuetify-loader@^1.7.2:
     file-loader "^6.2.0"
     loader-utils "^2.0.0"
 
-vuetify@^2.4.11:
-  version "2.4.11"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.4.11.tgz#3aba19a32cd89c5dce523260f589cf95d90e2dce"
-  integrity sha512-xFNwr95tFRfbyGNg5DBuUkWaKazMBr+ptzoSSL4PGrI0qItY5Vuusxh+ETPtjUXxwz76v5zVtGvF5rWvGQjy7A==
+vuetify@2.3.23:
+  version "2.3.23"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.3.23.tgz#1abd520c11e504bcae9a7299124727d83afef643"
+  integrity sha512-JZc9mFYfxacsXTEM4zCwU6PW1inMEYyHjZdkWkGnPlW1OQwmme4FXMIISB3nPI7BE+wcEDtGfBGBtSqFEJkHSw==
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"

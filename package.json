@@ -10,13 +10,13 @@
     "serve": "vuepress dev recipes"
   },
   "devDependencies": {
-    "@vuepress/plugin-active-header-links": "1.8.2",
+    "@vuepress/plugin-active-header-links": "^1.8.2",
     "deepmerge": "^4.2.2",
     "fibers": "^5.0.0",
     "sass": "^1.32.11",
     "sass-loader": "7",
     "vuepress": "^1.8.2",
-    "vuetify": "^2.4.11",
+    "vuetify": "2.3.23",
     "vuetify-loader": "^1.7.2"
   },
   "resolutions": {
