@@ -60,7 +60,7 @@ export default {
 .recipes-container
   display: block;
   padding: $navbarHeight 2rem 0;
-  max-width: $homePageWidth;
+  max-width: 100%;
   margin: 16px auto;
   .recipes
     margin: 32px 0;

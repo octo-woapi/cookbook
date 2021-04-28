@@ -1,12 +1,12 @@
 <template>
   <div class="recipes">
     <v-subheader>All recipes</v-subheader>
-    <div class="row">
-      <div class="col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center"
-           v-for="recipe in recipes">
+    <v-row>
+      <v-col cols="12" sm="6" md="4" lg="3"
+             v-for="recipe in recipes" :key="recipe">
         <recipe-card class="recipe" v-bind="recipe" />
-      </div>
-    </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
