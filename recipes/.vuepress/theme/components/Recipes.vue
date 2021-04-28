@@ -3,7 +3,7 @@
     <v-subheader>All recipes</v-subheader>
     <v-row>
       <v-col cols="12" sm="6" md="4" lg="3"
-             v-for="recipe in recipes" :key="recipe">
+             v-for="recipe in recipes">
         <recipe-card class="recipe" v-bind="recipe" />
       </v-col>
     </v-row>
