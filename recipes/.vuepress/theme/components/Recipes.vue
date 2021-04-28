@@ -1,8 +1,11 @@
 <template>
   <div class="recipes">
     <v-subheader>All recipes</v-subheader>
-    <div class="recipes-row">
-      <recipe-card class="recipe" v-for="recipe in recipes" v-bind="recipe" />
+    <div class="row">
+      <div class="col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center"
+           v-for="recipe in recipes">
+        <recipe-card class="recipe" v-bind="recipe" />
+      </div>
     </div>
   </div>
 </template>
