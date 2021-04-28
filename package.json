@@ -10,13 +10,17 @@
     "serve": "vuepress dev recipes"
   },
   "devDependencies": {
-    "@vuepress/plugin-active-header-links": "^1.7.1",
+    "@vuepress/plugin-active-header-links": "^1.8.2",
     "deepmerge": "^4.2.2",
-    "fibers": "^4.0.3",
-    "sass": "^1.29.0",
+    "fibers": "^5.0.0",
+    "sass": "^1.32.11",
     "sass-loader": "7",
-    "vuepress": "^1.7.1",
-    "vuetify": "^2.3.19",
-    "vuetify-loader": "^1.6.0"
+    "vuepress": "^1.8.2",
+    "vuetify": "2.3.23",
+    "vuetify-loader": "^1.7.2"
+  },
+  "resolutions": {
+    "is-svg": "4.3.1",
+    "ssri": "8.0.1"
   }
 }
