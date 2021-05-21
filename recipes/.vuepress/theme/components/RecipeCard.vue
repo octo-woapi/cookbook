@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto card" width="100%" min-height="150px" outlined :to="url">
+  <v-card class="mx-auto card" width="100%" min-height="170px" outlined :to="url">
     <v-card-title>{{ title }}</v-card-title>
     <v-card-subtitle>
       {{ description }}

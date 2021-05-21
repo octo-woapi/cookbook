@@ -3,8 +3,10 @@ import Vuetify, {
   VCardSubtitle,
   VCardTitle,
   VCardText,
+  VCol,
   VIcon,
   VProgressCircular,
+  VRow,
   VSubheader,
 } from "vuetify/lib"
 
@@ -28,8 +30,10 @@ export default ({
       VCardSubtitle,
       VCardTitle,
       VCardText,
+      VCol,
       VIcon,
       VProgressCircular,
+      VRow,
       VSubheader,
     },
   })
