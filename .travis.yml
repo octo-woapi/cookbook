@@ -7,7 +7,7 @@ script:
 - yarn build
 deploy:
   provider: pages
-  skip_cleanup: true
+  cleanup: false
   local_dir: "./recipes/.vuepress/dist"
   github_token: "$GITHUB_TOKEN"
   keep_history: true
