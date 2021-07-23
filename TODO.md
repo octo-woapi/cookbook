@@ -1,28 +1,9 @@
-## Must have
-
-1. Traitements en masse d’une même ressource (batch)
-1. Traitement asynchrone (les basics) => WWO/SRE : utilisé comme exemple de cookbook
-  - Recherche complexe asynchrone (trop de paramètres dans l’URL +  temps de traitement de la requête)
-1. [GUE] Panier d’achat
-1. [ACH] Mise à jour de plusieurs ressources (transaction)
-1. Accept-Language vs différentiation de ressources ou de comportement
-1. Cache API (ETag, Cache-Control, Pragma...)
-1. [MLM] Ressource complexe VS ressource light (design + ?fields=)
-1. Gestion des ID de ressources (quand en faire, ou pas, quoi choisir, quid du cas façade d’un système sous jacent (qui a ses propres ID, ou pas d’IDs...)) => https://matthiasnoback.nl/2018/05/when-and-where-to-determine-the-id-of-an-entity/
-1. [KENG] Filtre complexe (trop de paramètres dans l’URL)
-1. [KLEI] Versionner une API
-1. [MLM] Faire une action dans API sans créer de ressource ? Non-resource scenario
-1. Integers vs Strings vs libellés UI-friendly
-1. [ARD] Pagination
-1. [MLM] Format d'erreur
-
 ## Should have
 
 2. Renvoyer autre chose que du json (négociation de contenu, PDF, CSV, fichiers)
 2. Comment faire de l’upload de plusieurs binaires, en envoyant en même temps des metadata ?
 2. Idempotence en création de ressource => JVI : draft
 2. Exemple de HATEOAS (panier)
-2. Mets du swagger dans ta doc
 2. GET : les limitations (taille de l'URL => POST)
 2. Comment gérer l’héritage ?
 
