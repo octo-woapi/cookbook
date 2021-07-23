@@ -9,8 +9,11 @@ deploy:
   provider: pages
   skip_cleanup: true
   local_dir: "./recipes/.vuepress/dist"
-  github_token: $GITHUB_TOKEN
+  github_token: "$GITHUB_TOKEN"
   keep_history: true
   repo: octo-woapi/cookbook
   on:
     branch: master
+env:
+  global:
+    secure: RnHJl7W18cDWT27LH8WsWJdz7NP+zMxrdjVir5aArMM+J4O5CD8UhH20Spfuanb+0LwedyGGOPJHsu49ptyBKOGFgTikNC96nWrJu++c8g70f2xf3ah3/69OfVsJjQ9l2BybOiYMGYjVIuhtvfTdXFWUk8gwM5FP/kntEsARUsYf+MSGkeZ+8xUJsbeyhEIv93PTyqT5Fy0K9c515YC+h96SzfWfRB3F3OOkETzM51Kp/A//wYy26HS3cziDHFlzp1ybq9va3GrzlEQIIA28RvBYXkjj5EK0e6xjKSYclLjI4k+fqXso6WL8hMckG5LI2u0WpfAdV9zSALzBukQDwmlGpKgnCc4HWdPFv4Z7czPXbuFtQ1LIrtsb8ckg4yP0hXyzYOumbPyMfVzL45BctBU+LUWXM4NwtY2ImHE2JHtnDorka5X/GCqoc+Isxo2kQHDYr08YOv+3lDNaewImiwEb3S3ozHwAX4Jj82gaOcAWx0sZEfa112ajN87cbeukFxpZP6v1jb2FF9j4Nbe8x/g2GUQ7KnkX4+wfONwGEjMl8UEhwrT+/6XgazMx2zAEUxtx2LXUYviSzNk4BGt7wvdppN+Ovgw0bJW61Jl5RUh+5sf6O04zf/gt1vh/1GV9wHkowE9+ZsHWMRYfcDRui/zUWJTVu7pi8fhIaRUl68Y=
