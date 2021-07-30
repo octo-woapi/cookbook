@@ -7,7 +7,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Setup
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: '12'
