@@ -1,4 +1,4 @@
-name: GitHub Actions
+name: Workflow on master
 on: [push]
 jobs:
   build-and-deploy:
