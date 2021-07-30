@@ -1,15 +1,23 @@
 name: GitHub Actions
 on: [push]
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - name: Use Node.js
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Install and Build 🔧
         uses: actions/setup-node@v2
         with:
           node-version: '12'
           cache: 'yarn'
-      - run: yarn install
-      - run: yarn build
+        run: |
+          yarn install
+          yarn build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: ./recipes/.vuepress/dist # The folder the action should deploy.
