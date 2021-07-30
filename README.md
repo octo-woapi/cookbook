@@ -38,9 +38,7 @@ recipe
 
 Every pull request triggers a workflow that checks if the app is correctly built.
 When your pull request is accepted, the CI builds and checks if everything
-is ok. The changes are deployed onto master and available to readers after
+is ok. The changes are deployed onto gh-pages and available to readers after
 that.
 
 ## Contributing
-
-
