@@ -19,6 +19,8 @@ When building a REST API, we design an API that can be used by external develope
 
 ### Facilitate the integration of an API
 
+Documentation is a concise reference manual containing all the information required to work with the API.
+
 - API documentation improve the experience for developers and users.
 - Serve as a guide to help users become familiar with the API.
 - Increases adoption rate.
@@ -31,6 +33,8 @@ When building a REST API, we design an API that can be used by external develope
 
 **Swagger as example :**
 
+API documentation is a technical content deliverable.\
+This documentation containing instructions about how to effectively use and integrate with an API.\
 Demonstrating new features from Swagger allows you to:
 
 - Demonstrates the integration between API and Swagger.
