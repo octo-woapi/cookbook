@@ -75,7 +75,7 @@ Most APIs are documented in OpenAPI format and are based on [Petstore sample](ht
 We highly recommend you to choose OpenAPI standards. It's a most used standard for API documentation.\
 The OpenAPI specification was known as Swagger until version 3.0.\
 Some open source libs are available, we recommend you to choose one of them.
-We recommend to choose Hapi Swagger in case of NodeJS API. You can find the NPM package [here](https://www.npmjs.com/package/hapi-swagger)
+We recommend to choose Hapi Swagger in case of NodeJS API. You can find the NPM package [here](https://www.npmjs.com/package/hapi-swagger).\
 Benefits:
 
 - Simple to implement and to understand for the developpers and Client.
@@ -102,7 +102,7 @@ const swaggerOptions: HapiSwagger.RegisterOptions = {
     basePath: `/basePath`,
     grouping: 'tags',
     security: [{ oidc: [] }],
-};
+}
 
 const plugins: Array<Hapi.ServerRegisterPluginObject<any>> = [
     {
