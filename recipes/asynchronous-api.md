@@ -17,12 +17,12 @@ Il est donc inenvisageable d'exposer une API synchrone sur ce cas d'usage pour p
 ## How to design my API ?
 Nous recommandons d'adopter un design API dit "asynchrone" pour répondre à ces problématiques.\
 Deux points d'architecture sont à mettre en place :
-* Exposer un endpoint REST permettant de récupérer la demande de l'utilisateur, dans notre cas, sa demande d'export PDF
-* **Décaler l’exécution du traitement** "long" par l’intermédiaire d’un batch. 
-Celui peut être déclenché via cronjob ou via une file de message par exemple. 
-Le but étant de dé-corréler le trafic HTTP transitant par l’API du traitement « lourd » du batch.
+* Exposer un endpoint REST permettant de **récupérer la demande de l'utilisateur**, dans notre cas, sa demande d'export PDF
+* **Dé-corréler le traffic HTTP du traitement lourd si cela est nécéssaire**. Ce traitement peut être 
+déclenché via cronjob ou via une file de message par exemple. 
 
-Maintenant que nous savons comment traiter cette demande, il reste la problématique de la notification de l’utilisateur quand à l’avancement du traitement et de la récupération des données demandées.
+Il nous reste maintenant à gérer la problématique de la notification de l’utilisateur quand à l’avancement du traitement 
+et de la récupération des données demandées.
 
 Pour répondre à cela deux design API sont possibles.
 
@@ -82,8 +82,20 @@ Retry-After: 60
 }
 ```
 
+Si une erreur survient lors du traitement asynchrone, renvoyer un payload contenant un code d'erreur et un message:
+ ```shell
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ ```
+ ```json
+{
+  "error_code": "PRODUCT_NOT_FOUND",
+  "error_message": "The product #42 is no longer available."
+}
+```
+
 ### Obtention de la ressource
-Une fois le traitement terminé coté serveur, le endpoint de status **doit retourner un code HTTP 303** indiquant l’URI de la nouvelle ressource crée (ici notre pdf) :
+Une fois le traitement terminé avec succès coté serveur, le endpoint de status **doit retourner un code HTTP 303** indiquant l’URI de la nouvelle ressource crée (ici notre pdf) :
  ```shell
 curl -X GET https://api.example.com/v1/orders/reports/status/99311702-cdaa-4069-85da-ea74a46035e6
  ```
@@ -98,6 +110,11 @@ Pour plus d’information sur le code [HTTP 303](https://developer.mozilla.org/e
 Les inconvénients principaux de cette technique peuvent résider dans :
 * Le développement supplémentaire d’un endpoint de suivi d’avancement coté serveur;
 * Une sur-sollicitation du système et un gaspillage énergétique induit par la mécanique de suivi coté client.
+
+### Don't
+N'indiquez pas à vos clients d'utiliser la route GET de votre ressource (exemple: `GET api/orders/reports/{id}`) pour suivre la création de la ressource.
+
+Les clients ne seront pas en mesure de distinguer si la ressource n'existe pas car le traitement n'a pas fini ou si une erreur est survenue.
 
 
 ## Recipe 2: Async API with a callback URL
