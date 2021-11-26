@@ -16,7 +16,7 @@ Is there a RESTful way to do so?
 
 ## Recipe 1 : single upload
 
-In most cases, you will just need to upload files one by one, without creating a resource at the same time.\ 
+In most cases, you will just need to upload files one by one, without creating a resource at the same time.
 
 In this case, the solution is pretty simple, and aligned with REST standards:
 - expose a separate resource representing the file\
