@@ -26,31 +26,23 @@ Documentation is a concise reference manual containing all the information requi
 - Reduces onboarding time.
 
 ## Recipe
+To provide an efficient API documentation to your consumers, you will have to:
+- Chose your documentation standard.
+- Provide a User Interface for your documentation 
+- Automate the generation of your documentation
 
-We highly recommend you to choose OpenAPI standards. It's a most used standard for API documentation.\
-The OpenAPI specification was known as Swagger until version 3.0.\
-Some open source libs are available, we recommend you to choose one of them.\
-We recommend to choose Hapi Swagger in case of NodeJS API. You can find the NPM package [here](https://www.npmjs.com/package/hapi-swagger).\
-Benefits:
+### Chose your documentation standard
 
-- Simple to implement and to understand for the developpers and Client.
-- Can be used with NodeJS API.
-- An active community.
+Multiple API documentation formats exist, but we highly recommend choosing [OpenAPI (Swagger)](https://www.openapis.org/). It's by far the most used standard for API documentation.
 
-Other specifications exist: RAML and API Blueprint.\
-An example can be found here: [Petstore sample](https://petstore.swagger.io/) provided by [swagger.io](https://swagger.io/) team.
+The OpenAPI specification was known as Swagger until version 3.0, and is often called by this name.
 
-- Choose your documentation standard.
-- Automate the generation of your documentation.
+Other specifications exist, as RAML or API Blueprint, but they are less common and will come with less out-of-the-box tooling.
 
-**Swagger as example :**
+#### OpenAPI (Swagger) format example
 
-Demonstrating new features from Swagger allows you to:
-
-- Demonstrates the integration between API and Swagger.
-- Demonstrates new products in a client / consumer context.
-
-Example of an OpenAPI file in yaml format:
+Example of an OpenAPI file in yaml format (json format is also supported),\
+describing a `POST /products` endpoint.
 
 ```shell
   paths:
@@ -75,7 +67,34 @@ Example of an OpenAPI file in yaml format:
           description: OK
 ```
 
-### Implementation example with Node.Js
+### Provide a User Interface for your documentation
+
+Once you have a documentation in OpenAPI format, you will need an interface for the user to explore the documentation.
+
+[Swagger UI](https://swagger.io/tools/swagger-ui/) is the most common tool for displaying an out-of-the-box UI for an OpenAPI description.
+
+A example can be found here: [Petstore sample](https://petstore.swagger.io/) provided by [swagger.io](https://swagger.io/) team.
+
+You can deploy Swagger UI as a static asset on any web server.\
+Open source libraries also exist to bundle it within a web framework: [hapi-swagger for Hapi JS](https://github.com/glennjones/hapi-swagger), [Springfox for Spring](https://springfox.github.io/springfox/)...
+
+## Auto-generate your documentation
+
+Maintaining an OpenAPI description of your API can be painful: you will have to keep the documentation up-to-date with the implementation, which implies a lot of work and a rigorous workflow. There will always be a risk to forget an evolution and expose an out-of-date documentation.
+
+A convenient solution is to autogenerate the API documentation directly from the codebase:
+- the documentation is based on the endpoints declared in your controllers: path, HTTP verb, query params, body schema...
+- metadata can be added to the route declaration for the descriptions and examples
+- the generated documentation can be globally configured: describe the API, filter the endpoints, generate several doc files...
+
+This feature exists in most web frameworks, using open source libraries.\
+The Swagger UI exposition often come along with the lib.
+
+Here are a few examples with common frameworks.
+
+### Implementation example with Node.Js / Hapi
+
+Declare a Swagger documentation using the Hapi-Swagger lib:
 
 ```js
 import * as Hapi from '@hapi/hapi'
@@ -111,7 +130,7 @@ const plugins: Array<Hapi.ServerRegisterPluginObject<any>> = [
 await server.register(plugins)
 ```
 
-### Implementation example in Java / Kotlin / Spring
+### Implementation example in Java or Kotlin / Spring
 
 If you have a Spring application (in Java or Kotlin), you can use the [Springfox lib](https://springfox.github.io/springfox/) to:
 
@@ -150,5 +169,3 @@ Please refer to [Springfox documentation](http://springfox.github.io/springfox/d
 - [Swagger](https://swagger.io/)
 - [ReDoc](https://redocly.github.io/redoc/)
 - [OpenAPI Generator](https://openapi-generator.tech/)
-
-For more information on error documentation : [API Error format](https://octo-woapi.github.io/cookbook/error-format.html).
