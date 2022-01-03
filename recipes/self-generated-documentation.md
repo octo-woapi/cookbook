@@ -73,10 +73,10 @@ Once you have a documentation in OpenAPI format, you will need an interface for 
 
 [Swagger UI](https://swagger.io/tools/swagger-ui/) is the most common tool for displaying an out-of-the-box UI for an OpenAPI description.
 
-A example can be found here: [Petstore sample](https://petstore.swagger.io/) provided by [swagger.io](https://swagger.io/) team.
+An example can be found here: [Petstore sample](https://petstore.swagger.io/) provided by [swagger.io](https://swagger.io/) team.
 
 You can deploy Swagger UI as a static asset on any web server.\
-Open source libraries also exist to bundle it within a web framework: [hapi-swagger for Hapi JS](https://github.com/glennjones/hapi-swagger), [Springfox for Spring](https://springfox.github.io/springfox/)...
+Open source libraries also exist to bundle it within a web framework: [hapi-swagger for Hapi JS](https://github.com/glennjones/hapi-swagger), [Springdoc for Spring](https://springdoc.org/#Introduction)...
 
 ## Auto-generate your documentation
 
@@ -114,7 +114,7 @@ const swaggerOptions: HapiSwagger.RegisterOptions = {
     security: [{ oidc: [] }],
 }
 
-const plugins: Array<Hapi.ServerRegisterPluginObject<any>> = [
+const plugins = [
     {
         plugin: Inert
     },
@@ -132,37 +132,40 @@ await server.register(plugins)
 
 ### Implementation example in Java or Kotlin / Spring
 
-If you have a Spring application (in Java or Kotlin), you can use the [Springfox lib](https://springfox.github.io/springfox/) to:
+If you have a Spring application (in Java or Kotlin), you can use the [Springdoc lib](https://springdoc.org) to:
 
 - generate automatically an OpenAPI description of the endpoints declared in your application (json or yaml file)
 - expose a Swagger UI static page on your application, displaying the generated documentation
 
-Add Springfox dependency, for example with Gradle and SpringBoot:
+Add Springdoc dependency, for example with Gradle and SpringBoot:
 
-```bash
-
+```kotlin
 dependencies {
-    implementation "io.springfox:springfox-boot-starter:3.0.0"
+    implementation "org.springdoc:springdoc-openapi-ui:1.6.3"
+    implementation "org.springdoc:springdoc-openapi-webmvc-core:1.6.3"
+    // and if you use Kotlin:
+    implementation "org.springdoc:springdoc-openapi-kotlin:1.6.3"
 }
 ```
 
-Declare the API in a dedicated config file, using the `@EnableSwagger2` annotation:
+Declare the API in a dedicated config file:
 
-```bash
+```kotlin
 @Configuration
-@EnableSwagger2
 class SwaggerConfig {
     @Bean
-    fun apiDocumentation(): Docket = Docket(SWAGGER_2)
-        .groupName("My API")
-        .apiInfo("My API provides a great service!")
-        .build()
+    fun apiDocumentation(): GroupedOpenApi {
+      return GroupedOpenApi.builder()
+          .group("My-API")
+          .info(Info().title("My API"))
+          .build();
+    }
 }
 ```
 
-By default, the documentation will be generated for all endpoints declared in Spring controllers.
-Swagger UI is available on `<host>/swagger-ui.html`  
-Please refer to [Springfox documentation](http://springfox.github.io/springfox/docs/current/#quick-start-guides) or [Baeldung tutorial](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) for further details.
+By default, the documentation will be generated for all endpoints declared in Spring controllers.\
+Swagger UI is available on `<host>/swagger-ui.html`\
+Please refer to [Springdoc documentation](https://springdoc.org/#getting-started) or [Baeldung tutorial](https://www.baeldung.com/spring-rest-openapi-documentation) for further details.
 
 ## Documentation
 
