@@ -19,10 +19,10 @@ But sometimes, the id of the resource to create is already known by the client.
 
 This can happen when:
 - The business object has been created first in another application, and we want to use the same id when synchronizing it with our API.
-  - e.g.: when a product is purchased, the PSP generates a Transaction id when the payment is complete.
+  - e.g.: when a product is purchased, the Payment Provider generates a Transaction id when the payment is complete.
   Then we want to create a new `/transactions` resource on our Order API, using the id given by the PSP.
 - The resource id is not randomly generated but has a business meaning, and can be chosen client-side
-  - e.g.: I want my products to be identified by their business identifier: EAN, UPC...
+  - e.g.: I want my products to be identified by their business identifier: [EAN (European Article Numbering)](https://fr.wikipedia.org/wiki/Code-barres_EAN), [UPC (Universal Product Code)](https://fr.wikipedia.org/wiki/Code_universel_des_produits)...
 
 ## Recipe
 
@@ -38,7 +38,9 @@ PUT https://api.example.com/v1/products/761234567890 HTTP/1.1
 < 201 Created
 ```
 
-The syntax is the same as for a complete update: `PUT` kind of perform an upsert on the resource. 
+The syntax is the same as for a complete update: `PUT` kind of perform an upsert on the resource.
+
+In the case of a creation, the [201 Status Code](https://developer.mozilla.org/fr/docs/Web/HTTP/Status/201) is expected.
 
 ## Resources
 
