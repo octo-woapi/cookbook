@@ -11,7 +11,7 @@ My API has a `/users` resource, representing a User, and containing its personal
 
 ```json
 {
-    "id": 1,
+    "id": 42,
     "first_name" : "Tom",
     "last_name": "Smith",
     "email": "tom.smith@example.com",
@@ -92,7 +92,7 @@ On the other hand, `PUT` has many advantages:
 - unlike `PATCH`, it is safe and idempotent
 
 **Then, should I never use `PATCH`?**\
-If you want a complete flexibility on the fields that will be updated, but you don't want to perform a complete update with PUT because the payload will be too big, `PATCH` is the only way to go.\
+If you want a complete flexibility on the fields that will be updated, but you don't want to perform a complete update with `PUT` because the payload will be too big, `PATCH` is the only way to go.\
 But in this case, it may reveal that the resource is too big, or that its business meaning is unclear, and we encourage you to reconsider its granularity.
 
 ## Resources
