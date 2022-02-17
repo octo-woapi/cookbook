@@ -57,17 +57,17 @@ It consists of putting the version number in the path of the URI.
 This strategy is widely used by the giants of the web, as showing the following examples: 
 
 
-Google	URI path 
+Google URI path : 
 https://www.googleapis.com/youtube/v3/
 
-Instagram	URI path
+Instagram	URI path : 
 https://api.instagram.com/v1/media/popular
 
-LinkedIn	URI
+LinkedIn URI path : 
 http://api.linkedin.com/v1/people/
 
 
 ### Conclusion
 
-There exist other ways to version your Api such as : Http header or query parameter versioning...
+There exist other ways to version your Api such as Http header or query parameter versioning...
 But since the version of an API is essential information, we recommend you to show it in the URI rather than in the HTTP header, it is straightforward and more simple (you don't have to deal with the complexity of handling the headers).
