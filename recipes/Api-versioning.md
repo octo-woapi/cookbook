@@ -15,24 +15,24 @@ APIs are contracts established between you and your API consumers. However, they
 There exist different types of changes: 
 
 - Compatible changes: These are changes that respect the principle of backward compatibility and have no impact on the existing customers, for example, for an Album resource presented in JSON format:
-
+```json
 {
    "album": {
     "title": "Dark Side of the Moon"
    }
 }
-
+```
 The adding of a new attribute has no impact on the general structure.  
-
+```json
 {
   "album": {
     "title": "Dark Side of the Moon",
     "artist": "Roger Waters"
   }  
 }
-
+```
 - Breaking changes: These are changes that directly impact the existing customers. On the previous example, if one or more customers use the "artist" element, changing from one artist per album to a list of artists per album makes this element unusable by customers.
-
+```json
 {
   "album": {
     "title": "Dark Side of the Moon",
@@ -44,7 +44,7 @@ The adding of a new attribute has no impact on the general structure.
     }
   }
 }
-
+```
 So, APIs only need to be up versioned when a breaking change is made. 
 
 Once you add a new version, you need to decide how to handle it!
