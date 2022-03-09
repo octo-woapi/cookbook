@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Api-Versioning | The REST API cookbook</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="When and how to version your API ?">
+    
+    <link rel="preload" href="/cookbook/assets/css/0.styles.61efb392.css" as="style"><link rel="preload" href="/cookbook/assets/js/app.41dca5e6.js" as="script"><link rel="preload" href="/cookbook/assets/js/3.9f6d8892.js" as="script"><link rel="preload" href="/cookbook/assets/js/1.58ef23db.js" as="script"><link rel="preload" href="/cookbook/assets/js/9.2139fb15.js" as="script"><link rel="prefetch" href="/cookbook/assets/js/10.23a6cb12.js"><link rel="prefetch" href="/cookbook/assets/js/11.1481d2a5.js"><link rel="prefetch" href="/cookbook/assets/js/12.c4643e96.js"><link rel="prefetch" href="/cookbook/assets/js/13.6214a33d.js"><link rel="prefetch" href="/cookbook/assets/js/14.e05cf048.js"><link rel="prefetch" href="/cookbook/assets/js/15.cdea9715.js"><link rel="prefetch" href="/cookbook/assets/js/16.41ded39e.js"><link rel="prefetch" href="/cookbook/assets/js/17.1353a737.js"><link rel="prefetch" href="/cookbook/assets/js/18.25321bd2.js"><link rel="prefetch" href="/cookbook/assets/js/19.f21e124f.js"><link rel="prefetch" href="/cookbook/assets/js/4.f8125ee1.js"><link rel="prefetch" href="/cookbook/assets/js/5.2d57fee9.js"><link rel="prefetch" href="/cookbook/assets/js/6.b29b864a.js"><link rel="prefetch" href="/cookbook/assets/js/7.6dafa1e9.js"><link rel="prefetch" href="/cookbook/assets/js/8.1b37a035.js">
+    <link rel="stylesheet" href="/cookbook/assets/css/0.styles.61efb392.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/cookbook/" class="home-link router-link-active"><!----> <span class="site-name">The REST API cookbook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="api-versioning"><a href="#api-versioning" class="header-anchor">#</a> Api-Versioning</h1> <h2 id="use-case"><a href="#use-case" class="header-anchor">#</a> Use-case</h2> <p>APIs are contracts established between you and your API consumers. However, they need to be evolved over time and one of the key challenges is to deal with these alterations.</p> <h2 id="when-to-version-your-api"><a href="#when-to-version-your-api" class="header-anchor">#</a> When to version your API ?</h2> <p>There exist different types of changes:</p> <ul><li>Compatible changes: These are changes that respect the principle of backward compatibility and have no impact on the existing customers, for example, for an Album resource presented in JSON format:</li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+   <span class="token property">&quot;album&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Dark Side of the Moon&quot;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>The adding of a new attribute has no impact on the general structure.</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;album&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Dark Side of the Moon&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;artist&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Roger Waters&quot;</span>
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>Breaking changes: These are changes that directly impact the existing customers. On the previous example, if one or more customers use the &quot;artist&quot; element, changing from one artist per album to a list of artists per album makes this element unusable by customers.</li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;album&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Dark Side of the Moon&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;artists&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;artist&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;Roger Waters&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;David Gilmour&quot;</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>So, APIs only need to be up versioned when a breaking change is made.</p> <p>Once you add a new version, you need to decide how to handle it!</p> <h2 id="recipe"><a href="#recipe" class="header-anchor">#</a> Recipe</h2> <p>There are different types to version your Api, but the most effective method currently used is the URI versioning.
+It consists of putting the version number in the path of the URI.</p> <p>This strategy is widely used by the giants of the web, as showing the following examples:</p> <p>Google URI path :
+https://www.googleapis.com/youtube/v3/</p> <p>Instagram	URI path :
+https://api.instagram.com/v1/media/popular</p> <p>LinkedIn URI path :
+http://api.linkedin.com/v1/people/</p> <p>It is important to note that, although the evolution of api version is transparent for the customer, who could remain on the old version,
+at some point, it is essential that all customers migrate to the new version (by modifying the version in the url and adapting their code to the breaking changes).</p> <h3 id="conclusion"><a href="#conclusion" class="header-anchor">#</a> Conclusion</h3> <p>There exist other ways to version your Api such as Http header or query parameter versioning...
+But since the version of an API is essential information, we recommend you to show it in the URI rather than in the HTTP header, it is straightforward and more simple (you don't have to deal with the complexity of handling the headers), also we recommend including a mandatory version number, on a digit, at the highest level of the uri path and not having more than two major versions at the same time.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/cookbook/assets/js/app.41dca5e6.js" defer></script><script src="/cookbook/assets/js/3.9f6d8892.js" defer></script><script src="/cookbook/assets/js/1.58ef23db.js" defer></script><script src="/cookbook/assets/js/9.2139fb15.js" defer></script>
+  </body>
+</html>
