@@ -67,9 +67,10 @@ LinkedIn URI path :
 http://api.linkedin.com/v1/people/
 
 
-It is important to note that this approach may impact the client and may not respect the REST principles (that a URI should refer to a unique resource).
+It is important to note that, although the evolution of api version is transparent for the customer, who could remain on the old version,
+at some point, it is essential that all customers migrate to the new version (by modifying the version in the url and adapting their code to the breaking changes).
 
 ### Conclusion
 
 There exist other ways to version your Api such as Http header or query parameter versioning...
-But since the version of an API is essential information, we recommend you to show it in the URI rather than in the HTTP header, it is straightforward and more simple (you don't have to deal with the complexity of handling the headers), also we recommend including a mandatory version number, on a digit, at the highest level of the uri path.
+But since the version of an API is essential information, we recommend you to show it in the URI rather than in the HTTP header, it is straightforward and more simple (you don't have to deal with the complexity of handling the headers), also we recommend including a mandatory version number, on a digit, at the highest level of the uri path and not having more than two versions at the same time.
