@@ -7,20 +7,28 @@ complexity: 1
 
 ## Use-case
 
-Understanding error messages is an important part of web application development and troubleshooting, However revealing too many details can allow attackers to uncover vulnerabilities that can be used to exploit system flaws. We should properly handle our error messages and ensure we don't expose sensitive data to our users.
+Understanding error messages is an important part of web application development, However revealing too many details can allow attackers to uncover vulnerabilities that can be used to exploit system flaws. We should properly handle our error messages and ensure we don't expose sensitive data to our users.
 
 
 ## Recipe
 
-**How error messages can lead to security issues ?**
+When a user tries to access a resource that does not exist, the first step is to provide a proper status code, `404 not found` in this case. Additionally, you may need to provide more information in the response body, but be careful about the details you add to you error message ! 
 
-The first step in handling errors is to provide a client with a proper status code. Additionally, we may need to provide more information in the response body. These codes allow a client to understand the broad nature of the error that occurred, but sometimes we don't want to reveal that a certain resource is available, this information should only be exposed to those who have access to that resource.
+Lets take the following example : 
 
-For example, when a user tries to access a file that does not exist, the error message typically indicates,'file not found'. When accessing a file that the user is not authorized for, it indicates, 'access denied'. The user is not supposed to know the file even exists, but such inconsistencies will readily reveal the presence or absence of inaccessible files or the site's directory structure, in that case, we would rather display 404 Http status code (not found) than 403(forbidden). Thus, 403 allows the hacker to learn more about your file system structure and security vulnerabilities.
+`GET /v1/clients/12345/attributions/21100512345`
+=> 404 "The Attribution 211005123456 was not found"
 
+`GET /v1/clients/12345/attributions/21100534871`
+=> 404 "The client 12345 is not linked to Attribution 21100534871"
 
+In fact, we have a security issue here! you are exposing sensitives data (like client id and attributions id) that allow hackers to learn more about your file system structure and security vulnerabilities. In this case we suggest to limit your message error to a general message without mentioning any ids or any specefic detail that can be used by attackers.
 
+Also, When accessing a resource that a user is not authorized for, using `403 access denied`, will confirm that this resource does exist but it is forbidden for him. Such detail can also provide hackers clues on potential flaws. This information should only be exposed to those who have access to the resource and the others are not supposed to know that it even exists. As a solution, we would rather return `404 not found`, than `403 forbidden`.
+
+If you need to give more details to allow the client to understand the broad nature of the error that occurred, you can add these informations in log files, it is more safe that way!
 
 ## Conclusion
- Even when error messages don't provide a lot of detail, inconsistencies in such messages can still reveal important clues on how a site works, and what information is present under the covers.
+
+We recommand you to avoid revealing sensitives details while handling error messages (like ids, software version, access path) or unhandled exceptions. Thus, all these inconsistencies reveal important clues on how a site works, and what information is present under the covers.
  
