@@ -3,7 +3,7 @@ description: How error messages can lead to security issues ?
 complexity: 1
 ---
 
-# Handling errors
+# Handling error messages
 
 ## Use-case
 
@@ -22,13 +22,13 @@ Let's take the following example :
 `GET /v1/clients/12345/attributions/21100534871`
 => 404 "The client 12345 is not linked to Attribution 21100534871"
 
-In fact, there are security issues in these descriptions! You are exposing sensitives data (like client id and attributions id) that allow hackers to learn more about your file system structure and security vulnerabilities. In this case, we suggest you to limit your message error to a general message without mentioning  IDs or any specific detail that can be used by attackers.
+In fact, there are security issues in these descriptions! You are exposing sensitives data like (client id and attributions id) that allow hackers to learn more about your file system structure and security vulnerabilities. In this case, we suggest you to limit your message error to a general message without mentioning  IDs or any specific detail that can be used by attackers.
 
-Also, When accessing a resource that a user is not authorized for, using `403 access denied`, will confirm that this resource does exist, but it is forbidden for him. Such detail can also provide hackers clues on potential flaws. This information should only be exposed to those who have access to the resource, and the others are not supposed to know that it even exists. As a solution, we would rather return `404 not found`, than `403 forbidden`.
+Also, when accessing a resource that a user is not authorized for, using `403 access denied`, will confirm that this resource does exist, but it is forbidden for that user. Such detail can also provide hackers clues on potential flaws. This information should only be exposed to those who have access to the resource, and the others are not supposed to know that it even exists. As a solution, we would rather return `404 not found`, than `403 forbidden`.
 
 If you need to give more details to allow the client to understand the broad nature of the error that occurred, you can add these information in log files, it is more safe that way!
 
 ## Conclusion
 
-We recommend you to avoid revealing sensitives details while handling error messages like (IDs, software version, access path) or unhandled exceptions. Thus, all these inconsistencies reveal important clues on how a site works, and what information is present under the covers.
+We recommend you to avoid revealing sensitives details while handling error messages like (IDs, software version, access path) or unhandled exceptions because all these inconsistencies reveal important clues on how a site works, and what information is present under the covers.
  
