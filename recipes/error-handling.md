@@ -1,9 +1,9 @@
 ---
-description: Beware of chatty errors
+description: How error messages can lead to security issues ?
 complexity: 1
 ---
 
-# Handling error messages
+# Beware of chatty errors
 
 ## Use-case
 
