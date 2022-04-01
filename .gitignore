@@ -1,4 +1,6 @@
+# IDEs
 .idea/
+.DS_Store
 
 recipes/.vuepress/dist
 node_modules/
