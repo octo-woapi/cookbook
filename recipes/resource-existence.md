@@ -2,6 +2,7 @@
 description: How to check a resource existence ?
 complexity: 1
 ---
+# Resource existence
 
 ## Use-case
 In some cases, the client is not interested in the resource itself but by its existence. 
