@@ -16,7 +16,7 @@
     "sass": "^1.32.11",
     "sass-loader": "7",
     "vuepress": "^1.8.2",
-    "vuetify": "2.3.23",
+    "vuetify": "2.6.10",
     "vuetify-loader": "^1.7.2"
   },
   "resolutions": {
